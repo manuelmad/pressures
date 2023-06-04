@@ -1,0 +1,24 @@
+section {
+	max-width: 58rem;
+}
+
+#tabla_manual, #tabla_importada {
+	max-width: 50rem;
+	border: 0.3rem solid var(--dark-blue);
+}
+
+.datos th,  .datos td, #table2 th, #table2 td {
+	width: 6.4rem;
+}
+
+.datos input {
+	font-size: var(--ss);
+}
+
+#cuerpotabla td, #table2 td {
+	font-size: var(--ss);
+}
+
+.boton-calcular-tabla-container button, .boton-crear-tabla-container button  {
+	width: 20rem;
+}

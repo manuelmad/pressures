@@ -1,0 +1,182 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+	font-size: 62.5%;
+}
+
+:root {
+    --very-light-gray:#C7C7C7;
+    --text-input-field: #F7F7F7;
+    --hospital-green: #ACD982;
+    --very-light-blue:#bad7f1;
+    --dark-blue: #252C5A;
+    --white: #FFFFFF;
+    --black: #000000;
+    --ss: 1.2rem;
+    --sm: 1.4rem;
+    --md: 1.5rem;
+    --lg: 1.8rem;
+}
+
+section {
+	margin: 1rem auto;
+	width: 97%;
+	min-width: 31rem;
+	max-width: 50rem;
+	border: 0.3rem solid var(--hospital-green);
+	border-radius: 0.8rem;
+}
+
+h1 {
+	padding-top: 2rem;
+	text-transform: uppercase;
+}
+
+h1, h2 {
+	text-align: center;
+}
+
+p {
+	margin-top: 2rem;
+	font-size: var(--ss);
+}
+
+table {
+	border-collapse: collapse;
+}
+
+form {
+	margin-top: 1rem;
+}
+
+.datos-container {
+	text-align: center;
+	padding: 2rem 0;
+}
+
+#tabla_manual, #tabla_importada {
+	width: 95%;
+	/* min-width: 31rem; */
+	max-width: 40rem;
+	/* border: 0.3rem solid var(--dark-blue); */
+	border-radius: 0.8rem;
+	margin: 1rem auto;
+	padding: 1rem 0;
+}
+
+.botones-datos-container {
+	text-align: center;
+}
+
+.botones-datos-container button {
+	width: 18rem;
+}
+
+.agregar-eliminar-fila-container {
+	text-align: center;
+}
+
+.datos {
+	margin: 2rem auto;
+}
+
+.datos th,  .datos td {
+	border: 0.1rem solid black;
+	width: 4.4rem;
+}
+
+.datos input {
+	width: 100%;
+	font-size: 1rem;
+	text-align: end;
+	background-color: var(--text-input-field);
+}
+
+.cabecera-tabla, .cabecera-tabla2 {
+	background-color: var(--hospital-green);
+}
+
+#cuerpotabla td {
+	height: 3rem;
+	text-align: end;
+	font-size: 1rem;
+	padding: 0.3rem;
+}
+
+#tabla_oculta {
+	display: none;
+}
+
+.boton-calcular-tabla-container, .boton-exportar-tabla-container {
+	text-align: center;
+}
+
+.boton-calcular-tabla-container button, .boton-exportar-tabla-container button {
+	width: 18rem;
+}
+
+.boton-examinar-container, .boton-crear-tabla-container {
+	text-align: center;
+}
+
+.boton-crear-tabla-container button {
+	width: 18rem;
+}
+
+#table2 {
+	margin: 2rem auto;
+}
+
+#table2 th,  #table2 td {
+	border: 0.1rem solid black;
+	/*border-collapse: collapse;*/
+	width: 4.4rem;
+}
+
+#table2 td {
+	/*min-width: 4rem;*/
+	height: 3rem;
+	text-align: end;
+	padding: 0.3rem;
+	font-size: 1rem;
+}
+
+.boton-graficar-container {
+	text-align: center;
+}
+
+.boton-graficar-container button {
+	width: 12rem;
+}
+
+
+.canvas-container {
+	text-align: center;
+	margin-top: 2rem;
+}
+
+canvas {
+	border: 0.1rem solid black;
+}
+
+#error_msg span {
+	display: block;
+}
+
+.clean-fields {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 5rem;
+	border: none;
+}
+
+.clean-fields p {
+	margin: 0;
+}

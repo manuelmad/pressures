@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Aplicación web para calcular las presiones de poro en el subsuelo.">
+	<meta name= "robots" content= "index, follow">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+	<title>Calculo de presiones de poro en el subsuelo.</title>
+	<link href="./styles/presion-poro.css" type="text/css" rel="stylesheet" />
+	<link href="./styles/presion-poro-tablets.css" media="screen and (min-width: 600px)" type="text/css" rel="stylesheet" />
+	<link href="./styles/presion-poro-desktop.css" media="screen and (min-width: 1024px)" type="text/css" rel="stylesheet" />
+</head>
+<body>
+	<my-header img="./imgs/logo.png" name1="PROYECTOS" name2="SOBRE MÍ" name3="CURRÍCULUM" name4="CONTACTO" linkhome="https://manuelmad.github.io/index.html" link1="https://manuelmad.github.io/proyectos/proyectos.html" link2="https://manuelmad.github.io/index.html#personal-info" link3="https://manuelmad.github.io/index.html#curriculum" link4="#clean_fields_button"></my-header>
+	<main>
+		<h1>Cálculo de Presión de Poro  y Presión de Fractura de las Formaciones</h1>
+		<section class="datos-container">
+			<h2>TABLAS DE VALORES</h2>
+			<p>Elija la forma de ingreso de datos:</p>
+			<form>
+				<select id="data_input">
+					<option value="defect" selected>--------</option>
+					<option value="manual">Ingreso manual de datos</option>
+					<option value="auto">Importar datos desde Excel</option>
+				</select>
+			</form>
+			<div id="tabla_manual">
+				<p class="agregar-eliminar-fila-container">
+					<button id="agregar_fila" title="Agregar fila">Agregar fila</button> <button id="eliminar_fila" title="Eliminar fila">Eliminar fila</button>
+				</p>
+				<table class = "datos" id = "tabla">
+					<thead class = "cabecera-tabla">
+						<tr>
+							<th id="cabecera1">Profundidad.<br>(pies)</th>
+							<th id="cabecera2">&Delta;t<sub>n</sub><br>(&mu;seg / pie)</th>
+							<th id="cabecera3">&Delta;t<sub>o</sub><br>(&mu;seg / pie)</th>
+							<th id="cabecera4">Presión de Formación<br>(lpc.)</th>
+							<th id="cabecera5">Densidad Equivalente de Formación<br>(lpg.)</th>
+							<th id="cabecera6">Presión de Fractura<br>(lpc.)</th>
+							<th id="cabecera7">Densidad Equivalente de Fractura<br>(lpg.)</th>
+						</tr>
+					</thead>
+					<tbody id="cuerpotabla">
+						<tr>
+							<td><input type="number"></td>
+							<td><input type="number"></td>
+							<td><input type="number"></td>
+							<td><span></span></td>
+							<td><span></span></td>
+							<td><span></span></td>
+							<td><span></span></td>
+						</tr>
+					</tbody>
+				</table>
+				<table id = "tabla_oculta">
+					<thead class = "cabecera-tabla-oculta">
+						<tr>
+							<th>Profundidad.<br>(pies)</th>
+							<th>&Delta;t<sub>n</sub><br>(&mu;seg / pie)</th>
+							<th>&Delta;t<sub>o</sub><br>(&mu;seg / pie)</th>
+							<th>Presión de Formación<br>(lpc.)</th>
+							<th>Densidad Equivalente de Formación<br>(lpg.)</th>
+							<th>Presión de Fractura<br>(lpc.)</th>
+							<th>Densidad Equivalente de Fractura<br>(lpg.)</th>
+						</tr>
+					</thead>
+					<tbody id="cuerpotabla_oculta">
+					</tbody>
+				</table>
+				<p class="boton-calcular-tabla-container"><button id="calculos">Realizar cálculos y llenar tabla</button></p>
+				<p class="boton-exportar-tabla-container"><button id="exportar_excel">Exportar tabla a Excel</button></p>
+			</div>
+			<div id="tabla_importada">
+				<p class="boton-examinar-container"><input type="file" id="file" accept=".xls, .xlsx"></p>
+				<p class="boton-crear-tabla-container">
+					<button id="crear_tabla" title="Crear Tabla" onclick="crearTabla()">Realizar cálculos y llenar tabla</button>
+				</p>
+				<table id="table2">
+					<thead class = "cabecera-tabla2">
+						<tr>
+							<th id="cabecera1i">Profundidad.<br>(pies)</th>
+							<th id="cabecera2i">&Delta;t<sub>n</sub><br>(&mu;seg / pie)</th>
+							<th id="cabecera3i">&Delta;t<sub>o</sub><br>(&mu;seg / pie)</th>
+							<th id="cabecera4i">Presión de Formación<br>(lpc.)</th>
+							<th id="cabecera5i">Densidad Equivalente de Formación<br>(lpg.)</th>
+							<th id="cabecera6i">Presión de Fractura<br>(lpc.)</th>
+							<th id="cabecera7i">Densidad Equivalente de Fractura<br>(lpg.)</th>
+						</tr>
+					</thead>
+					<tbody id="cuerpotabla2">
+
+					</tbody>
+				</table>
+				<p class="boton-exportar-tabla-container"><button id="exportar_excel_auto">Exportar tabla a Excel</button></p>
+			</div>		
+		</section>
+		<section class="grafica-container">
+			<p class="boton-graficar-container"><button id="boton_graficar_curvas" onclick="graficarCurvas()">Graficar Curvas</button> <button onclick="canvasInicial()">Borrar Curvas</button></p>
+			<div class="canvas-container">
+				<canvas id="grafica"></canvas>
+				<p id="error_msg"></p>
+			</div>
+		</section>
+		<!--
+		<section>
+			<div class="pennebaker">
+				<p>Ecuación de Correlación de Pennebaker (Gradiente de presión de formación):</p>
+				<p>y = -85,46 X<sup>6</sup> + 705,9 X<sup>5</sup> - 2.422 X<sup>4</sup> + 4.422 X<sup>3</sup> - 4.531 X<sup>2</sup> + 2.473 X - 561,6</p>
+			</div>
+			<div class="eaton-poisson">
+				<p>Ecuación de Correlación de Eaton-Poisson (Relación de Poisson - Gulf Coast Variable Overburden):</p>
+				<p>y = 18,25 e<sup>13,95 X</sup></p>
+			</div>
+			<div class="ben-eaton">
+				<p>Ecuación de Correlación de Ben-Eaton (Gradiente de sobrecarga):</p>
+				<p>y = 226.197.827,01 X<sup>5</sup> - 1.011.899.666,65 X<sup>4</sup> + 1.811.383.432,42 X<sup>3</sup> - 1.621.558.131,48 X<sup>2</sup> + 725.880.849,54 X - 129.984.509,41</p>
+				<p>Esta ecuación es un aproximado. Se podría decir que para valores de profundidad menores a 3000 pies, hay restarle un 3% al resultado obtenido; y para valores mayores a 3000 pies, hay que sumarle un 1,1% al resultado obtenido</p>
+			</div>
+		</section>
+		-->
+		<section class="clean-fields">
+			<p><button id="clean_fields_button">Limpiar todos los campos</button></p>
+		</section>
+	</main>
+	<my-footer textbutton="MIS PROYECTOS" linkbutton="https://manuelmad.github.io/proyectos/proyectos.html"></my-footer>
+	<script type="module" src="./components/my-header.js"></script>
+    <script type="module" src="./components/my-footer.js"></script>
+	<script src="./src/xlsx.full.min.js"></script>
+	<script src="./src/FileSaver.min.js"></script>
+	<script src="./src/tableexport.min.js"></script>
+	<script src="./src/presion-poro.js" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+section {
+	max-width: 80rem;
+}
+
+#tabla_manual, #tabla_importada {
+	max-width: 70rem;
+}
+
+.datos th,  .datos td, #table2 th, #table2 td {
+	width: 9rem;
+}
